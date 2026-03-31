@@ -1,0 +1,304 @@
+$standartViewportView : 4vw;
+$colorDark : #1c2423;
+$colorLight : #272536ba;
+$colorEmpty : #5252523a;
+$kalenderWidthSize : 60%;
+
+// days
+$daysBgColor : #323234;
+
+@mixin anton-font {
+    font-family: "Anton", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+@mixin singleDays {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: large;
+    margin: 0.3vw;
+}
+
+.container-header {
+    display: flex;
+    justify-content: center;
+
+
+    .header {
+        width: $kalenderWidthSize;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 1vw;
+        padding: $standartViewportView - 2vw;
+        padding-bottom: $standartViewportView - 2.8vw;
+
+        .header-child-left {
+            font-size: calc($standartViewportView - 2vw);
+
+            @include anton-font;
+            letter-spacing: calc($standartViewportView / 10);
+
+            .text-Month {
+                font-size: calc($standartViewportView - 2vw);
+                position: relative;
+                display: inline-block; // Inline olarak tutmak için
+                cursor: pointer; // İmleci değiştirir
+
+                color: $colorDark;
+                transition: border-bottom 0.3s ease-in-out;
+                border: none;
+                background-color: transparent;
+                font-weight: bolder;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 0;
+                    height: 3px;
+                    /* Border kalınlığı */
+                    background-color: $colorDark;
+                    /* Border rengi */
+                    transition: width 0.3s ease;
+                    /* Genişlik animasyonu */
+                    // border-bottom: solid 5px #d7d7d7;
+                }
+
+                &:hover::after {
+                    width: 100%; // Hover olduğunda genişliği tam genişlik yap
+                }
+            }
+
+            .text-year {
+                font-size: calc($standartViewportView - 2vw);
+                position: relative;
+                display: inline-block; // Inline olarak tutmak için
+                cursor: pointer; // İmleci değiştirir
+
+                color: $colorLight;
+                cursor: pointer;
+                margin-left: 10px;
+                border: none;
+                background-color: transparent;
+                font-weight: bolder;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 0;
+                    height: 3px;
+                    /* Border kalınlığı */
+                    background-color: $colorDark;
+                    /* Border rengi */
+                    transition: width 0.3s ease;
+                    /* Genişlik animasyonu */
+                    // border-bottom: solid 5px #d7d7d7;
+                }
+
+                &:hover::after {
+                    width: 100%; // Hover olduğunda genişliği tam genişlik yap
+                }
+            }
+        }
+
+        .header-child-right {
+            display: grid;
+            grid-template-rows: auto auto;
+
+            font-size: calc($standartViewportView / 2.5);
+            @include anton-font;
+            text-align: right;
+
+
+            .monthly-spand {
+                color: $colorDark;
+            }
+
+            .currency {
+                color: $colorLight;
+            }
+        }
+    }
+}
+
+.kalenderContainer {
+    .kalender {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .month {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto auto;
+            width: 60%;
+
+            .daysOfTheWeek {
+                background-color: $colorDark;
+                border-radius: 3vw;
+                padding: 0.5vw 1vw;
+                color: rgb(246, 247, 248);
+                margin: 0vw 0.1vw;
+                margin-bottom: 0.6vw !important;
+
+                .dayName {
+                    @include singleDays;
+                    text-align: center;
+                }
+            }
+
+            .daysOfTheMonth {
+                background-color: $colorLight;
+                @include singleDays;
+                border-radius: 1vw;
+                padding: 0.8vw;
+                height: 5vw;
+                position: relative;
+                transition: transform 0.2s ease-in-out;
+
+                &:not(.empty):hover {
+                    transform: scale(1.05);
+                }
+
+                .invoices {
+                    // background-color: antiquewhite;
+                    height: calc(100% - 1.3vw);
+                }
+
+                .numberOfDays {
+                    position: absolute;
+                    bottom: 0.5vw;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                    letter-spacing: 1px;
+                    font-weight: 700;
+                    font-size: large;
+                    font-size: 1.3vw;
+                    color: white;
+                }
+            }
+
+            .today {
+                box-shadow: #ffffff 0px 0px 1px, rgba(12, 233, 64, 0.7764705882) 0px 0px 5px, #0a4800 0px 0px 8px;
+                border: 1px solid rgb(0 135 32 / 68%);
+                border-radius: 1vw;
+                background-color: #37e360b8;
+            }
+
+            .empty {
+                background-color: $colorEmpty;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 858px) {
+    .container-header {
+        .header {
+            width: 100%;
+            padding: $standartViewportView;
+            padding-bottom: $standartViewportView - 2.8vw;
+
+            .header-child-left {
+                font-size: calc($standartViewportView - 0.5vw);
+
+                letter-spacing: calc($standartViewportView / 5);
+
+                .text-Month {}
+
+                .text-year {}
+            }
+
+            .header-child-right {
+                font-size: calc($standartViewportView / 1.2);
+
+                .monthly-spand {}
+
+                .currency {}
+            }
+        }
+
+        .kalender-days {}
+    }
+
+    .kalenderContainer {
+        display: flex;
+        justify-content: center;
+
+        .kalender {
+            width: 100%;
+            display: unset;
+            align-items: unset;
+            justify-content: unset;
+            flex-direction: unset;
+
+            .month {
+                width: unset;
+                padding: $standartViewportView - 2vw;
+                // display: grid;
+                // grid-template-columns: auto auto auto auto auto auto auto;
+
+                .daysOfTheWeek {
+                    font-size: 2vw;
+                    height: 4vw;
+                    margin: 0vw 0.4vw;
+                    margin-bottom: 1.5vw !important;
+
+                    .dayName {
+                        font-weight: 600;
+                        font-size: larger;
+                        font-size: 3vw;
+                    }
+
+                    // background-color: $colorDark;
+                    // @include singleDays;
+                    // border-radius: 3vw;
+                    // padding: 0.5vw 1vw;
+                    // margin-bottom: 0.8vw;
+                    // color: rgb(246, 247, 248);
+                    // text-align: center;
+                }
+
+                .daysOfTheMonth {
+                    font-size: 2vw;
+                    // background-color: $colorLight;
+                    // @include singleDays;
+                    // border-radius: 1vw;
+                    // padding: 0.8vw;
+                    height: 12vh;
+                    // position: relative;
+
+                    .invoices {
+                        // background-color: antiquewhite;
+                        // height: calc(100% - 1.3vw);
+                    }
+
+                    .numberOfDays {
+                        // position: absolute;
+                        // bottom: 0.5vw;
+                        // left: 50%;
+                        // transform: translateX(-50%);
+
+                        // font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                        // letter-spacing: 1px;
+                        font-weight: 900;
+                        font-size: larger;
+                        font-size: 4vw;
+                        // color: white;
+                    }
+                }
+
+                .empty {
+                    // background-color: $colorEmpty;
+                }
+            }
+        }
+    }
+}

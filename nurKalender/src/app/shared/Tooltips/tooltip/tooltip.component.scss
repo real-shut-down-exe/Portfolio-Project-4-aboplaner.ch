@@ -1,0 +1,168 @@
+$blur: blur(9px);
+
+.tooltip {
+    position: fixed;
+    left: 0px;
+    top: 20px;
+    bottom: 20px;
+    border-radius: 0px 10px 10px 0px;
+    padding: 10px 20px 20px 20px;
+    width: 17%;
+    box-shadow:
+        #ffffff 0px 0px 1px,
+        #0ce940c6 0px 0px 5px,
+        #0a4800 0px 0px 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #333;
+    color: #fff;
+    z-index: 1000;
+    pointer-events: auto;
+    transition: opacity 0.2s ease;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.mainContainer {
+    width: 100%;
+    display: flex;
+    border-bottom: #8182861b 4px solid;
+    padding: 15px 0px 15px 0px;
+
+    .leftSide {
+        width: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        align-content: space-around;
+        flex-wrap: wrap;
+
+        .leftTopSide {
+            display: flex;
+            align-items: center;
+
+            img,
+            p {
+                display: inline-block;
+            }
+
+            p {
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5vw;
+                margin-left: 10px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+        }
+
+        .leftBottomSide {
+            display: flex;
+            align-items: flex-start;
+
+            p {
+                justify-content: center;
+                align-items: center;
+                font-size: 0.9vw;
+                margin-top: 5px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+        }
+    }
+
+    .rightSide {
+        width: 30%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+
+        .rightTopSide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5vw;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+        }
+
+        .rightBottomSide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .status {
+                justify-content: center;
+                align-items: center;
+                font-size: 0.9vw;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                border: 1px solid #d4ffcd;
+                padding: 2px 10px;
+                border-radius: 10px;
+                background-color: #164b0e;
+            }
+        }
+    }
+}
+
+.header {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom: 1px double #7d7d7db0;
+    margin-bottom: 1vw;
+    padding-bottom: 0.6vw;
+}
+
+.tooltip-footer{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .footerTitle{
+        font-size: 1.2vw;
+        font-weight: bold;
+        color: #959595;
+        display: flex;
+        align-items: flex-end;
+    }
+    .totalSpend{
+        font-weight: bold;
+        color: white;
+        font-size: 2em;
+        display: flex;
+        align-items: flex-end;
+    }
+}
+
+.scrollArea {
+    max-height: 45rem; // Burada istediğiniz yüksekliği ayarlayın
+    overflow-y: auto; // Dikey kaydırmayı etkinleştirin
+    scrollbar-color: rgba(255, 0, 0, 0.395) rgba(255, 166, 0, 0.166);
+    scrollbar-width: thin;
+
+    scrollbar-width: none; // Firefox için kaydırma çubuğunu gizle
+
+    // Chrome, Edge ve Safari için kaydırma çubuğunu gizle
+    &::-webkit-scrollbar {
+        display: none; // Kaydırma çubuğunu gizler
+    }
+}
+
+.scrollAreax {
+    max-height: 100%; // Burada istediğiniz yüksekliği ayarlayın
+    overflow-y: auto; // Dikey kaydırmayı etkinleştirin
+    scrollbar-color: rgba(255, 0, 0, 0.395) rgba(255, 166, 0, 0.166);
+    scrollbar-width: thin;
+
+    scrollbar-width: none; // Firefox için kaydırma çubuğunu gizle
+
+    // Chrome, Edge ve Safari için kaydırma çubuğunu gizle
+    &::-webkit-scrollbar {
+        display: none; // Kaydırma çubuğunu gizler
+    }
+}
